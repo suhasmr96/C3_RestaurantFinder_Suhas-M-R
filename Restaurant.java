@@ -72,7 +72,17 @@ public class Restaurant {
     }
 
 
+    public Double onSelectingItemsFromMenuCalculateOrderTotal(List<Item> selectedItems)
+    {
+        double totalPrice = 0;
 
 
+        for(Item item:selectedItems)
+        {
+            totalPrice+=item.getPrice();
+        }
 
+        return totalPrice;
+
+    }
 }
