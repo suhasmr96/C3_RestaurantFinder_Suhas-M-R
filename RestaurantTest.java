@@ -104,5 +104,26 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void calculate_order_total_should_return_total_price_of_the_selected_items_in_the_menu()
+    {
+        LocalTime openingTime=LocalTime.parse("11:00:00");
+        LocalTime closingTime=LocalTime.parse("23:00:00");
+        restaurant= new Restaurant("HouseofCommons","Bangalore",openingTime,closingTime);
+
+        restaurant.addToMenu("Pizza",300);
+        restaurant.addToMenu("Biriyani",200);
+        restaurant.addToMenu("ItalianPasta",300);
+        restaurant.addToMenu("AmericanChopsuey",200);
+
+        List<Item> selectedMenu=restaurant.getMenu();
+
+        Double orderTotal=restaurant.onSelectingItemsFromMenuCalculateOrderTotal(selectedMenu);
+
+        assertEquals(1000,orderTotal);
+
+
+
+    }
 
 }
